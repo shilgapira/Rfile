@@ -38,13 +38,14 @@ static NSString *fullResourceKey(NSString *prefix, NSString *type, NSString *key
     NSMutableSet *_handlers;
 }
 
-@synthesize path = _path, target = _target, prefix = _prefix;
+@synthesize path = _path, target = _target, prefix = _prefix, defines = _defines;
 
 - (id)init {
     if (self = [super init]) {
         _path = [NSFileManager defaultManager].currentDirectoryPath;
         _target = [_path stringByAppendingPathComponent:@"Resources"];
         _prefix = @"r";
+        _defines = NO;
         _handlers = [NSMutableSet set];
     }
     return self;
@@ -118,12 +119,18 @@ static NSString *fullResourceKey(NSString *prefix, NSString *type, NSString *key
     
     for (NSString *key in sortedKeys) {
         printf("'%s' => '%s'\n\r", [key UTF8String], [resources[key] UTF8String]);
-        [hLines addObject:[NSString stringWithFormat:@"extern NSString * const %@;",key]];
-        [mLines addObject:[NSString stringWithFormat:@"NSString * const %@ = \"%@\";",key,resources[key]]];
+        if (self.defines) {
+            [hLines addObject:[NSString stringWithFormat:@"#define %@ @\"%@\"",key,resources[key]]];
+        } else {
+            [hLines addObject:[NSString stringWithFormat:@"extern NSString * const %@;",key]];
+            [mLines addObject:[NSString stringWithFormat:@"NSString * const %@ = @\"%@\";",key,resources[key]]];
+        }
     }
     
     [self writeFileRepresentation:hLines withExtension:@"h"];
-    [self writeFileRepresentation:mLines withExtension:@"m"];
+    if (!self.defines) {
+        [self writeFileRepresentation:mLines withExtension:@"m"];
+    }
 }
 
 @end
