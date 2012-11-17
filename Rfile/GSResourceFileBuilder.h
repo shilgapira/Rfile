@@ -34,6 +34,8 @@
 
 @property (nonatomic,copy) NSString *prefix;
 
+@property (nonatomic,assign) BOOL defines;
+
 - (void)addHandler:(id<GSResourceHandler>)handler;
 
 - (void)build;

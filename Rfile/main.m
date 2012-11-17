@@ -31,7 +31,7 @@ int main(int argc, const char * argv[])
 {
     for (int i = 0; i < argc; i++) {
         if (strncasecmp(argv[i], "--help", 6) == 0) {
-            printf("Usage: Rfile [-dir <path>] [-target <file>] [-prefix <prefix>]\n\r");
+            printf("Usage: Rfile [-defines <yes|no>] [-dir <path>] [-target <file>] [-prefix <prefix>]\n\r");
             return 0;
         }
     }
@@ -51,6 +51,9 @@ int main(int argc, const char * argv[])
         }
         if ([defaults objectForKey:@"prefix"]) {
             builder.prefix = [defaults objectForKey:@"prefix"];
+        }
+        if ([defaults objectForKey:@"defines"]) {
+            builder.defines = [[defaults objectForKey:@"defines"] isEqualToString:@"yes"];
         }
         
         [builder build];
