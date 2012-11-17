@@ -29,7 +29,7 @@
 @implementation GSStringsResourceHandler
 
 - (NSString *)type {
-    return @"string";
+    return @"str";
 }
 
 - (NSDictionary *)entriesForResourceAtPath:(NSString *)path {
@@ -39,7 +39,12 @@
     }
     
     NSError *error;
-    NSString *stringsFile = [NSString stringWithContentsOfFile:path encoding:NSUnicodeStringEncoding error:&error];
+    NSStringEncoding encoding;
+    NSString *stringsFile = [NSString stringWithContentsOfFile:path usedEncoding:&encoding error:&error];
+    if (error) {
+        NSLog(@"Error opening strings file '%@': %@", path, error);
+    }
+    
     NSDictionary *strings = [stringsFile propertyListFromStringsFileFormat];
     
     NSMutableDictionary *entries = [NSMutableDictionary dictionary];
@@ -58,13 +63,13 @@
 @implementation GSImageResourceHandler
 
 - (NSString *)type {
-    return @"image";
+    return @"img";
 }
 
 - (NSDictionary *)entriesForResourceAtPath:(NSString *)path {
     NSString *ext = [[path pathExtension] lowercaseString];
     if ([ext isEqualToString:@"png"] || [ext isEqualToString:@"jpg"]) {
-        NSString *filename = [path lastPathComponent];
+        NSString *filename = [[path lastPathComponent] stringByDeletingPathExtension];
         if ([filename length]) {
             return @{filename : filename};
         }
@@ -79,13 +84,13 @@
 @implementation GSSoundResourceHandler
 
 - (NSString *)type {
-    return @"sound";
+    return @"aud";
 }
 
 - (NSDictionary *)entriesForResourceAtPath:(NSString *)path {
     NSString *ext = [[path pathExtension] lowercaseString];
     if ([ext isEqualToString:@"ogg"] || [ext isEqualToString:@"mp3"] || [ext isEqualToString:@"wav"]) {
-        NSString *filename = [path lastPathComponent];
+        NSString *filename = [[path lastPathComponent] stringByDeletingPathExtension];
         if ([filename length]) {
             return @{filename : filename};
         }

@@ -30,7 +30,7 @@
 int main(int argc, const char * argv[])
 {
     for (int i = 0; i < argc; i++) {
-        if (strncasecmp(argv[i], "--help", 6) == 0) {
+        if (strncasecmp(argv[i], "-help", 5) == 0) {
             printf("Usage: Rfile [-dir <path>] [-target <file>] [-prefix <prefix>]\n\r");
             return 0;
         }
