@@ -95,12 +95,10 @@ static NSString *fullResourceKey(NSString *prefix, NSString *type, NSString *key
 - (NSMutableArray *)createFileRepresentation {
     NSMutableArray *lines = [NSMutableArray new];
     
-    NSString *time = [NSDateFormatter localizedStringFromDate:[NSDate date] dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterShortStyle];
-    
     [lines addObject:@"//"];
     [lines addObject:@"// Resource file"];
     [lines addObject:@"//"];
-    [lines addObject:[NSString stringWithFormat:@"// Generated at: %@",time]];
+    [lines addObject:[NSString stringWithFormat:@"// Generated at: %@",NSDate.date]];
     [lines addObject:@"//"];
     [lines addObject:@""];
     
