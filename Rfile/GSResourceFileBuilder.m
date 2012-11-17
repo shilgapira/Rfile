@@ -45,7 +45,7 @@ static NSString *fullResourceKey(NSString *prefix, NSString *type, NSString *key
         _path = [NSFileManager defaultManager].currentDirectoryPath;
         _target = [_path stringByAppendingPathComponent:@"Resources"];
         _prefix = @"r";
-        _defines = NO;
+        _defines = YES;
         _handlers = [NSMutableSet set];
     }
     return self;
