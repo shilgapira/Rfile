@@ -133,6 +133,9 @@ static NSString *fullResourceKey(NSString *prefix, NSString *type, NSString *key
         }
     }
     
+    [hLines addObject:@""];
+    [mLines addObject:@""];
+    
     [self writeFileRepresentation:hLines withExtension:@"h"];
     if (!self.defines) {
         [self writeFileRepresentation:mLines withExtension:@"m"];
