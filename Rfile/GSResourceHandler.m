@@ -42,7 +42,7 @@
     NSStringEncoding encoding;
     NSString *stringsFile = [NSString stringWithContentsOfFile:path usedEncoding:&encoding error:&error];
     if (error) {
-        NSLog(@"Error opening strings file '%@': %@", path, error);
+        fprintf(stderr, "Error opening strings file '%s': %s\n\r", path.UTF8String, error.localizedDescription.UTF8String);
     }
     
     NSDictionary *strings = [stringsFile propertyListFromStringsFileFormat];

@@ -42,13 +42,21 @@ static NSString *fullResourceKey(NSString *prefix, NSString *type, NSString *key
 
 - (id)init {
     if (self = [super init]) {
-        _path = [NSFileManager defaultManager].currentDirectoryPath;
+        _path = NSFileManager.defaultManager.currentDirectoryPath;
         _target = [_path stringByAppendingPathComponent:@"Resources"];
         _prefix = @"r";
         _defines = YES;
         _handlers = [NSMutableSet set];
     }
     return self;
+}
+
+- (void)setTarget:(NSString *)target {
+    if ([target.pathExtension isEqualToString:@".h"] || [target.pathExtension isEqualToString:@".m"]) {
+        _target = [target stringByDeletingPathExtension];
+    } else {
+        _target = [target copy];
+    }
 }
 
 - (void)addHandler:(id<GSResourceHandler>)handler {
