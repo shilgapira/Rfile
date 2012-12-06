@@ -98,8 +98,6 @@ static NSString *fullResourceKey(NSString *prefix, NSString *type, NSString *key
     [lines addObject:@"//"];
     [lines addObject:@"// Resource file"];
     [lines addObject:@"//"];
-    [lines addObject:[NSString stringWithFormat:@"// Generated at: %@",NSDate.date]];
-    [lines addObject:@"//"];
     [lines addObject:@""];
     
     return lines;
