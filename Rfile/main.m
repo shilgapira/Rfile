@@ -24,36 +24,35 @@
 
 #import <Foundation/Foundation.h>
 #import "GSResourceHandler.h"
-#import "GSResourceFileBuilder.h"
+#import "GSRfileBuilder.h"
 
 
 int main(int argc, const char * argv[])
 {
-    for (int i = 0; i < argc; i++) {
-        if (strncasecmp(argv[i], "-help", 5) == 0) {
-            printf("Usage: Rfile [-defines <yes|no>] [-dir <path>] [-target <file>] [-prefix <prefix>]\n\r");
+    @autoreleasepool {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if (![defaults objectForKey:@"dir"] || ![defaults objectForKey:@"target"]) {
+            printf("Usage: Rfile -dir path -target file [-prefix <prefix>] [-format <struct|define|extern>]\n");
             return 0;
         }
-    }
-    
-    @autoreleasepool {
-        GSResourceFileBuilder *builder = [GSResourceFileBuilder new];
+        
+        GSRfileBuilder *builder = [GSRfileBuilder new];
         [builder addHandler:[GSStringsResourceHandler new]];
         [builder addHandler:[GSImageResourceHandler new]];
         [builder addHandler:[GSSoundResourceHandler new]];
         
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        if ([defaults objectForKey:@"dir"]) {
-            builder.path = [defaults objectForKey:@"dir"];
-        }
-        if ([defaults objectForKey:@"target"]) {
-            builder.target = [defaults objectForKey:@"target"];
-        }
+        builder.path = [defaults objectForKey:@"dir"];
+        builder.target = [defaults objectForKey:@"target"];
         if ([defaults objectForKey:@"prefix"]) {
             builder.prefix = [defaults objectForKey:@"prefix"];
         }
-        if ([defaults objectForKey:@"defines"]) {
-            builder.defines = [[defaults objectForKey:@"defines"] isEqualToString:@"yes"];
+        NSString *format = [defaults objectForKey:@"format"];
+        if ([format isEqualToString:@"define"]) {
+            builder.format = GSRfileFormatDefine;
+        } else if ([format isEqualToString:@"extern"]) {
+            builder.format = GSRfileFormatExtern;
+        } else {
+            builder.format = GSRfileFormatStruct;
         }
         
         [builder build];

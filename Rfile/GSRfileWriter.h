@@ -1,5 +1,5 @@
 //
-// NSString+Rfile.h
+// GSRfileWriter.h
 //
 // Copyright (c) 2012 Gil Shapira
 //
@@ -24,14 +24,19 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSString (Rfile)
 
-- (NSString *)stringByConvertingToAscii;
+@interface GSRfileWriter : NSObject
 
-- (NSString *)stringByConvertingToCIdentifier;
+@property (nonatomic,copy) NSString *prefix;
 
-- (NSString *)stringByAddingBackslashes;
+@property (nonatomic,copy) NSString *cmdLine;
 
-- (NSString *)stringByPaddingToMinimumLength:(NSUInteger)length;
+- (void)addResource:(NSString *)resource key:(NSString *)key type:(NSString *)type;
+
+- (void)writeToTarget:(NSString *)target;
+
+- (NSMutableArray *)createFileLines;
+
+- (void)writeFileLines:(NSArray *)lines toFileAtPath:(NSString *)path;
 
 @end

@@ -83,13 +83,21 @@ static void insertBeforeCharacters(NSMutableString *string, NSCharacterSet *set,
 - (NSString *)stringByAddingBackslashes {
     NSMutableString *result = [self mutableCopy];
     
-    [result replaceOccurrencesOfString:@"\\" withString:@"\\\\" options:0 range:NSMakeRange(0, [result length])];
-    [result replaceOccurrencesOfString:@"\n" withString:@"\\n" options:0 range:NSMakeRange(0, [result length])];
-    [result replaceOccurrencesOfString:@"\r" withString:@"\\r" options:0 range:NSMakeRange(0, [result length])];
-    [result replaceOccurrencesOfString:@"\t" withString:@"\\t" options:0 range:NSMakeRange(0, [result length])];
-    [result replaceOccurrencesOfString:@"\"" withString:@"\\\"" options:0 range:NSMakeRange(0, [result length])];
+    [result replaceOccurrencesOfString:@"\\" withString:@"\\\\" options:0 range:NSMakeRange(0, result.length)];
+    [result replaceOccurrencesOfString:@"\n" withString:@"\\n" options:0 range:NSMakeRange(0, result.length)];
+    [result replaceOccurrencesOfString:@"\r" withString:@"\\r" options:0 range:NSMakeRange(0, result.length)];
+    [result replaceOccurrencesOfString:@"\t" withString:@"\\t" options:0 range:NSMakeRange(0, result.length)];
+    [result replaceOccurrencesOfString:@"\"" withString:@"\\\"" options:0 range:NSMakeRange(0, result.length)];
     
     return [result copy];
+}
+
+- (NSString *)stringByPaddingToMinimumLength:(NSUInteger)length {
+    if (self.length >= length) {
+        return self;
+    }
+
+    return [self stringByPaddingToLength:length withString:@" " startingAtIndex:0];
 }
 
 @end

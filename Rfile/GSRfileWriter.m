@@ -1,5 +1,5 @@
 //
-// GSResourceFileBuilder.h
+// GSRfileWriter.m
 //
 // Copyright (c) 2012 Gil Shapira
 //
@@ -22,22 +22,43 @@
 // THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
-#import "GSResourceHandler.h"
+#import "GSRfileWriter.h"
 
 
-@interface GSResourceFileBuilder : NSObject
+@implementation GSRfileWriter
 
-@property (nonatomic,copy) NSString *path;
+- (void)addResource:(NSString *)resource key:(NSString *)key type:(NSString *)type {
+}
 
-@property (nonatomic,copy) NSString *target;
+- (void)writeToTarget:(NSString *)target {
+}
 
-@property (nonatomic,copy) NSString *prefix;
+- (NSMutableArray *)createFileLines {
+    NSMutableArray *lines = [NSMutableArray new];
 
-@property (nonatomic,assign) BOOL defines;
+    [lines addObject:@"//"];
+    [lines addObject:@"// Resources"];
+    [lines addObject:@"//"];
+    [lines addObject:@"//"];
+    [lines addObject:@"// Generated with Rfile via:"];
+    [lines addObject:@"//"];
+    [lines addObject:[NSString stringWithFormat:@"// %@",self.cmdLine]];
+    [lines addObject:@"//"];
+    [lines addObject:@""];
 
-- (void)addHandler:(id<GSResourceHandler>)handler;
+    return lines;
+}
 
-- (void)build;
+- (void)writeFileLines:(NSArray *)lines toFileAtPath:(NSString *)path {
+    printf("Writing file: %s\n",[path UTF8String]);
+
+    NSString *output = [lines componentsJoinedByString:@"\n"];
+    
+    __autoreleasing NSError *error = nil;
+    [output writeToFile:path atomically:NO encoding:NSUTF8StringEncoding error:&error];
+    if (error) {
+        fprintf(stderr, "Couldn't write file %s: %s\n", [path UTF8String], [error.description UTF8String]);
+    }
+}
 
 @end

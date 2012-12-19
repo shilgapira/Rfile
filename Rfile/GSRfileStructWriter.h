@@ -1,5 +1,5 @@
 //
-// NSString+Rfile.h
+// GSRfileStructWriter.h
 //
 // Copyright (c) 2012 Gil Shapira
 //
@@ -23,15 +23,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GSRfileWriter.h"
 
-@interface NSString (Rfile)
 
-- (NSString *)stringByConvertingToAscii;
-
-- (NSString *)stringByConvertingToCIdentifier;
-
-- (NSString *)stringByAddingBackslashes;
-
-- (NSString *)stringByPaddingToMinimumLength:(NSUInteger)length;
+@interface GSRfileStructWriter : GSRfileWriter
 
 @end

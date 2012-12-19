@@ -1,5 +1,5 @@
 //
-// NSString+Rfile.h
+// GSRfileGlobalsWriter.h
 //
 // Copyright (c) 2012 Gil Shapira
 //
@@ -23,15 +23,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GSRfileWriter.h"
 
-@interface NSString (Rfile)
 
-- (NSString *)stringByConvertingToAscii;
+@interface GSRfileGlobalsWriter : GSRfileWriter
 
-- (NSString *)stringByConvertingToCIdentifier;
-
-- (NSString *)stringByAddingBackslashes;
-
-- (NSString *)stringByPaddingToMinimumLength:(NSUInteger)length;
+@property (nonatomic,assign) BOOL defines;
 
 @end

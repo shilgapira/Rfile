@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B6D0DB01680EDF80091F3D7 /* GSRfileBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0DAC1680EDF80091F3D7 /* GSRfileBuilder.m */; };
+		2B6D0DB11680EDF80091F3D7 /* GSRfileStructWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0DAE1680EDF80091F3D7 /* GSRfileStructWriter.m */; };
+		2B6D0DB31680EE920091F3D7 /* GSRfileWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0DB21680EE920091F3D7 /* GSRfileWriter.m */; };
+		2B6D0DB61680F32F0091F3D7 /* GSRfileGlobalsWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6D0DB51680F32F0091F3D7 /* GSRfileGlobalsWriter.m */; };
 		2BC9621E15E7C627001D0771 /* NSString+Rfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC9621D15E7C627001D0771 /* NSString+Rfile.m */; };
 		2BCE89C415E5FDF6007DF5E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BCE89C315E5FDF6007DF5E7 /* Foundation.framework */; };
 		2BCE89C715E5FDF6007DF5E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCE89C615E5FDF6007DF5E7 /* main.m */; };
 		2BCE89CB15E5FDF6007DF5E7 /* Rfile.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BCE89CA15E5FDF6007DF5E7 /* Rfile.1 */; };
 		2BCE89D915E600EF007DF5E7 /* GSResourceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCE89D815E600EF007DF5E7 /* GSResourceHandler.m */; };
-		2BCE89DD15E61A2C007DF5E7 /* GSResourceFileBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCE89DC15E61A2C007DF5E7 /* GSResourceFileBuilder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +32,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2B6D0DAB1680EDF80091F3D7 /* GSRfileBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSRfileBuilder.h; sourceTree = "<group>"; };
+		2B6D0DAC1680EDF80091F3D7 /* GSRfileBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSRfileBuilder.m; sourceTree = "<group>"; };
+		2B6D0DAD1680EDF80091F3D7 /* GSRfileStructWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSRfileStructWriter.h; sourceTree = "<group>"; };
+		2B6D0DAE1680EDF80091F3D7 /* GSRfileStructWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSRfileStructWriter.m; sourceTree = "<group>"; };
+		2B6D0DAF1680EDF80091F3D7 /* GSRfileWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSRfileWriter.h; sourceTree = "<group>"; };
+		2B6D0DB21680EE920091F3D7 /* GSRfileWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSRfileWriter.m; sourceTree = "<group>"; };
+		2B6D0DB41680F32F0091F3D7 /* GSRfileGlobalsWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSRfileGlobalsWriter.h; sourceTree = "<group>"; };
+		2B6D0DB51680F32F0091F3D7 /* GSRfileGlobalsWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSRfileGlobalsWriter.m; sourceTree = "<group>"; };
 		2BC9621915E79689001D0771 /* NSString+Rfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Rfile.h"; sourceTree = "<group>"; };
 		2BC9621D15E7C627001D0771 /* NSString+Rfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Rfile.m"; sourceTree = "<group>"; };
 		2BCE89BF15E5FDF6007DF5E7 /* Rfile */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Rfile; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,8 +49,6 @@
 		2BCE89CA15E5FDF6007DF5E7 /* Rfile.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Rfile.1; sourceTree = "<group>"; };
 		2BCE89D715E600EF007DF5E7 /* GSResourceHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSResourceHandler.h; sourceTree = "<group>"; };
 		2BCE89D815E600EF007DF5E7 /* GSResourceHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSResourceHandler.m; sourceTree = "<group>"; };
-		2BCE89DB15E61A2C007DF5E7 /* GSResourceFileBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSResourceFileBuilder.h; sourceTree = "<group>"; };
-		2BCE89DC15E61A2C007DF5E7 /* GSResourceFileBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSResourceFileBuilder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,10 +93,16 @@
 			isa = PBXGroup;
 			children = (
 				2BCE89C615E5FDF6007DF5E7 /* main.m */,
+				2B6D0DAB1680EDF80091F3D7 /* GSRfileBuilder.h */,
+				2B6D0DAC1680EDF80091F3D7 /* GSRfileBuilder.m */,
+				2B6D0DAF1680EDF80091F3D7 /* GSRfileWriter.h */,
+				2B6D0DB21680EE920091F3D7 /* GSRfileWriter.m */,
+				2B6D0DAD1680EDF80091F3D7 /* GSRfileStructWriter.h */,
+				2B6D0DAE1680EDF80091F3D7 /* GSRfileStructWriter.m */,
+				2B6D0DB41680F32F0091F3D7 /* GSRfileGlobalsWriter.h */,
+				2B6D0DB51680F32F0091F3D7 /* GSRfileGlobalsWriter.m */,
 				2BCE89D715E600EF007DF5E7 /* GSResourceHandler.h */,
 				2BCE89D815E600EF007DF5E7 /* GSResourceHandler.m */,
-				2BCE89DB15E61A2C007DF5E7 /* GSResourceFileBuilder.h */,
-				2BCE89DC15E61A2C007DF5E7 /* GSResourceFileBuilder.m */,
 				2BC9621915E79689001D0771 /* NSString+Rfile.h */,
 				2BC9621D15E7C627001D0771 /* NSString+Rfile.m */,
 			);
@@ -157,8 +172,11 @@
 			files = (
 				2BCE89C715E5FDF6007DF5E7 /* main.m in Sources */,
 				2BCE89D915E600EF007DF5E7 /* GSResourceHandler.m in Sources */,
-				2BCE89DD15E61A2C007DF5E7 /* GSResourceFileBuilder.m in Sources */,
 				2BC9621E15E7C627001D0771 /* NSString+Rfile.m in Sources */,
+				2B6D0DB01680EDF80091F3D7 /* GSRfileBuilder.m in Sources */,
+				2B6D0DB11680EDF80091F3D7 /* GSRfileStructWriter.m in Sources */,
+				2B6D0DB31680EE920091F3D7 /* GSRfileWriter.m in Sources */,
+				2B6D0DB61680F32F0091F3D7 /* GSRfileGlobalsWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

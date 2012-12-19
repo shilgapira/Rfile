@@ -1,5 +1,5 @@
 //
-// NSString+Rfile.h
+// GSRfileBuilder.h
 //
 // Copyright (c) 2012 Gil Shapira
 //
@@ -23,15 +23,28 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GSResourceHandler.h"
 
-@interface NSString (Rfile)
 
-- (NSString *)stringByConvertingToAscii;
+typedef NS_ENUM(NSUInteger, GSRfileFormat) {
+    GSRfileFormatStruct,
+    GSRfileFormatDefine,
+    GSRfileFormatExtern,
+};
 
-- (NSString *)stringByConvertingToCIdentifier;
 
-- (NSString *)stringByAddingBackslashes;
+@interface GSRfileBuilder : NSObject
 
-- (NSString *)stringByPaddingToMinimumLength:(NSUInteger)length;
+@property (nonatomic,copy) NSString *path;
+
+@property (nonatomic,copy) NSString *target;
+
+@property (nonatomic,copy) NSString *prefix;
+
+@property (nonatomic,assign) GSRfileFormat format;
+
+- (void)addHandler:(id<GSResourceHandler>)handler;
+
+- (void)build;
 
 @end
