@@ -26,13 +26,6 @@
 #import "GSResourceHandler.h"
 
 
-typedef NS_ENUM(NSUInteger, GSRfileFormat) {
-    GSRfileFormatStruct,
-    GSRfileFormatDefine,
-    GSRfileFormatExtern,
-};
-
-
 @interface GSRfileBuilder : NSObject
 
 @property (nonatomic,copy) NSString *path;
@@ -40,8 +33,6 @@ typedef NS_ENUM(NSUInteger, GSRfileFormat) {
 @property (nonatomic,copy) NSString *target;
 
 @property (nonatomic,copy) NSString *prefix;
-
-@property (nonatomic,assign) GSRfileFormat format;
 
 - (void)addHandler:(id<GSResourceHandler>)handler;
 

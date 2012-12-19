@@ -23,8 +23,7 @@
 //
 
 #import "GSRfileBuilder.h"
-#import "GSRfileStructWriter.h"
-#import "GSRfileGlobalsWriter.h"
+#import "GSRfileWriter.h"
 
 
 @interface GSRfileBuilder ()
@@ -41,8 +40,8 @@
 - (id)init {
     if (self = [super init]) {
         self.handlers = [NSMutableSet set];
+        self.writer = [GSRfileWriter new];
         self.prefix = @"";
-        self.format = GSRfileFormatStruct;
     }
     return self;
 }
@@ -57,26 +56,7 @@
 
 - (void)setPrefix:(NSString *)prefix {
     _prefix = prefix;
-    _writer.prefix = prefix;
-}
-
-- (void)setFormat:(GSRfileFormat)format {
-    _format = format;
-    switch (_format) {
-        case GSRfileFormatStruct: {
-            _writer = [GSRfileStructWriter new];
-            break;
-        }
-
-        case GSRfileFormatDefine:
-        case GSRfileFormatExtern: {
-            GSRfileGlobalsWriter *writer = [GSRfileGlobalsWriter new];
-            writer.defines = (_format == GSRfileFormatDefine);
-            _writer = writer;
-            break;
-        }
-    }
-    _writer.prefix = _prefix;
+    self.writer.prefix = prefix;
 }
 
 - (void)addHandler:(id<GSResourceHandler>)handler {
@@ -108,12 +88,12 @@
 
 - (void)build {
     printf("Scanning for resources in: %s\n", [self.path UTF8String]);
-    [self collectResources];
+    [self scanResources];
     self.writer.cmdLine = [self cmdLine];
     [self.writer writeToTarget:self.target];
 }
 
-- (void)collectResources {
+- (void)scanResources {
     NSFileManager *fileManager = NSFileManager.defaultManager;
     NSDirectoryEnumerator *dirEnumerator = [fileManager enumeratorAtPath:self.path];
     for (NSString *subpath in dirEnumerator) {

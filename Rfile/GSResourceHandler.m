@@ -71,10 +71,7 @@
     if ([ext isEqualToString:@"png"] || [ext isEqualToString:@"jpg"]) {
         NSString *filename = [path lastPathComponent];
         NSString *key = [filename stringByDeletingPathExtension];
-        if ([ext isEqualToString:@"png"]) {
-            filename = [filename stringByDeletingPathExtension];
-        }
-        if ([key length]) {
+        if (key.length && filename.length) {
             return @{key : filename};
         }
     }
@@ -94,9 +91,10 @@
 - (NSDictionary *)entriesForResourceAtPath:(NSString *)path {
     NSString *ext = [[path pathExtension] lowercaseString];
     if ([ext isEqualToString:@"ogg"] || [ext isEqualToString:@"mp3"] || [ext isEqualToString:@"wav"]) {
-        NSString *filename = [[path lastPathComponent] stringByDeletingPathExtension];
-        if ([filename length]) {
-            return @{filename : filename};
+        NSString *filename = [path lastPathComponent];
+        NSString *key = [filename stringByDeletingPathExtension];
+        if (key.length && filename.length) {
+            return @{key : filename};
         }
     }
     

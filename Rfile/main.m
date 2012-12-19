@@ -32,7 +32,7 @@ int main(int argc, const char * argv[])
     @autoreleasepool {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         if (![defaults objectForKey:@"dir"] || ![defaults objectForKey:@"target"]) {
-            printf("Usage: Rfile -dir path -target file [-prefix <prefix>] [-format <struct|define|extern>]\n");
+            printf("Usage: Rfile -dir path -target file [-prefix <prefix>]\n");
             return 0;
         }
         
@@ -45,14 +45,6 @@ int main(int argc, const char * argv[])
         builder.target = [defaults objectForKey:@"target"];
         if ([defaults objectForKey:@"prefix"]) {
             builder.prefix = [defaults objectForKey:@"prefix"];
-        }
-        NSString *format = [defaults objectForKey:@"format"];
-        if ([format isEqualToString:@"define"]) {
-            builder.format = GSRfileFormatDefine;
-        } else if ([format isEqualToString:@"extern"]) {
-            builder.format = GSRfileFormatExtern;
-        } else {
-            builder.format = GSRfileFormatStruct;
         }
         
         [builder build];

@@ -35,8 +35,4 @@
 
 - (void)writeToTarget:(NSString *)target;
 
-- (NSMutableArray *)createFileLines;
-
-- (void)writeFileLines:(NSArray *)lines toFileAtPath:(NSString *)path;
-
 @end
