@@ -107,14 +107,16 @@
     NSString *name = [type stringByConvertingToCIdentifier];
     NSDictionary *resources = _types[type];
 
-    [resources enumerateKeysAndObjectsUsingBlock:^(NSString *resourceKey, NSString *resourceValue, BOOL *stop) {
+    NSArray *keys = [resources.allKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    for (NSString *resourceKey in keys) {
         NSString *resourceName = [resourceKey stringByConvertingToCIdentifier];
+        NSString *resourceValue = resources[resourceKey];
         NSString *defineName = $(@"_%@Res%@%@",self.prefix,name,resourceName);
 
         printf("    '%s' => '%s'\n", [resourceName UTF8String], [resourceValue UTF8String]);
 
         [lines addObject:$(@"#define %@ @\"%@\"",[defineName stringByPaddingToMinimumLength:kDefinePadding],resourceValue)];
-    }];
+    }
 }
 
 - (void)appendStructForType:(NSString *)type toLines:(NSMutableArray *)lines {
@@ -124,10 +126,11 @@
 
     [lines addObject:$(@"typedef struct %@ {",structName)];
 
-    [resources enumerateKeysAndObjectsUsingBlock:^(NSString *resourceKey, NSString *resourceValue, BOOL *stop) {
+    NSArray *keys = [resources.allKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    for (NSString *resourceKey in keys) {
         NSString *resourceName = [resourceKey stringByConvertingToCIdentifier];
         [lines addObject:$(@"    void *%@;",resourceName)];
-    }];
+    }
 
     [lines addObject:$(@"} %@;",structName)];
 }
