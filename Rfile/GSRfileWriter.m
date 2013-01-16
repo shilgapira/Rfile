@@ -137,6 +137,10 @@
 
 - (void)appendResourcesStructWithTypes:(NSArray *)types toLines:(NSMutableArray *)lines {
     [lines addObject:$(@"typedef struct _%@Resources {",self.prefix)];
+    NSString *additionsDefine = FMT(@"%@RESOURCE_ADDITIONS",[self.prefix uppercaseString]);
+    ADD(@"    #ifdef %@",additionsDefine);
+    ADD(@"    %@",additionsDefine);
+    ADD(@"    #endif");
 
     for (NSString *type in types) {
         NSString *name = [type stringByConvertingToCIdentifier];
