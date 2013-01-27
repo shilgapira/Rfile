@@ -36,6 +36,7 @@ static NSString *GSRfileTemplate =
 \n\
 ////////////////////////////////////////////////////////////////////////////////\n\
 #pragma mark - Convenience macros\n\
+////////////////////////////////////////////////////////////////////////////////\n\
 //\n\
 // These macros return the requested resource directly.\n\
 //\n\
@@ -61,6 +62,7 @@ static NSString *GSRfileTemplate =
 \n\
 ////////////////////////////////////////////////////////////////////////////////\n\
 #pragma mark - Utility macros\n\
+////////////////////////////////////////////////////////////////////////////////\n\
 //\n\
 // These macros return the resource's key rather than the resource itself. They\n\
 // can be used when the resource needs to be accessed using other APIs than\n\
@@ -87,6 +89,11 @@ static NSString *GSRfileTemplate =
 \n\
 ////////////////////////////////////////////////////////////////////////////////\n\
 #pragma mark - Internal\n\
+////////////////////////////////////////////////////////////////////////////////\n\
+//\n\
+// Internal defines and helpers used by the above macros. These should be\n\
+// considered implementation details and aren't meant to be used directly.\n\
+//\n\
 \n\
 //\n\
 // Low level macro that translates resource types and names into one of the\n\
