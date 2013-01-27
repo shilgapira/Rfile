@@ -29,7 +29,7 @@
 @implementation GSStringsResourceHandler
 
 - (NSString *)type {
-    return @"str";
+    return @"string";
 }
 
 - (NSDictionary *)entriesForResourceAtPath:(NSString *)path {
@@ -42,7 +42,7 @@
     NSStringEncoding encoding;
     NSString *stringsFile = [NSString stringWithContentsOfFile:path usedEncoding:&encoding error:&error];
     if (error) {
-        fprintf(stderr, "Error opening strings file '%s': %s\n", path.UTF8String, error.localizedDescription.UTF8String);
+        fprintf(stderr, "Error opening strings file '%s': %s\n", [path UTF8String], [error.localizedDescription UTF8String]);
     }
     
     NSDictionary *strings = [stringsFile propertyListFromStringsFileFormat];
@@ -63,7 +63,7 @@
 @implementation GSImageResourceHandler
 
 - (NSString *)type {
-    return @"img";
+    return @"image";
 }
 
 - (NSDictionary *)entriesForResourceAtPath:(NSString *)path {
@@ -85,7 +85,7 @@
 @implementation GSSoundResourceHandler
 
 - (NSString *)type {
-    return @"aud";
+    return @"sound";
 }
 
 - (NSDictionary *)entriesForResourceAtPath:(NSString *)path {

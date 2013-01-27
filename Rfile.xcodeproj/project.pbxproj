@@ -12,8 +12,8 @@
 		2BC9621E15E7C627001D0771 /* NSString+Rfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC9621D15E7C627001D0771 /* NSString+Rfile.m */; };
 		2BCE89C415E5FDF6007DF5E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BCE89C315E5FDF6007DF5E7 /* Foundation.framework */; };
 		2BCE89C715E5FDF6007DF5E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCE89C615E5FDF6007DF5E7 /* main.m */; };
-		2BCE89CB15E5FDF6007DF5E7 /* Rfile.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BCE89CA15E5FDF6007DF5E7 /* Rfile.1 */; };
 		2BCE89D915E600EF007DF5E7 /* GSResourceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCE89D815E600EF007DF5E7 /* GSResourceHandler.m */; };
+		2BD422B716B5512900FDC029 /* libGRMustache6-MacOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD422B616B5512900FDC029 /* libGRMustache6-MacOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,7 +23,6 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				2BCE89CB15E5FDF6007DF5E7 /* Rfile.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -39,10 +38,22 @@
 		2BCE89BF15E5FDF6007DF5E7 /* Rfile */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Rfile; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BCE89C315E5FDF6007DF5E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2BCE89C615E5FDF6007DF5E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2BCE89C915E5FDF6007DF5E7 /* Rfile-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rfile-Prefix.pch"; sourceTree = "<group>"; };
-		2BCE89CA15E5FDF6007DF5E7 /* Rfile.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Rfile.1; sourceTree = "<group>"; };
 		2BCE89D715E600EF007DF5E7 /* GSResourceHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSResourceHandler.h; sourceTree = "<group>"; };
 		2BCE89D815E600EF007DF5E7 /* GSResourceHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSResourceHandler.m; sourceTree = "<group>"; };
+		2BD4229E16B3C2A200FDC029 /* GSRfileTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSRfileTemplate.h; sourceTree = "<group>"; };
+		2BD422A016B3C40900FDC029 /* Rfile.template */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; path = Rfile.template; sourceTree = "<group>"; };
+		2BD422AB16B5512900FDC029 /* GRMustache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustache.h; sourceTree = "<group>"; };
+		2BD422AC16B5512900FDC029 /* GRMustacheAvailabilityMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustacheAvailabilityMacros.h; sourceTree = "<group>"; };
+		2BD422AD16B5512900FDC029 /* GRMustacheContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustacheContext.h; sourceTree = "<group>"; };
+		2BD422AE16B5512900FDC029 /* GRMustacheError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustacheError.h; sourceTree = "<group>"; };
+		2BD422AF16B5512900FDC029 /* GRMustacheFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustacheFilter.h; sourceTree = "<group>"; };
+		2BD422B016B5512900FDC029 /* GRMustacheRendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustacheRendering.h; sourceTree = "<group>"; };
+		2BD422B116B5512900FDC029 /* GRMustacheTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustacheTag.h; sourceTree = "<group>"; };
+		2BD422B216B5512900FDC029 /* GRMustacheTagDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustacheTagDelegate.h; sourceTree = "<group>"; };
+		2BD422B316B5512900FDC029 /* GRMustacheTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustacheTemplate.h; sourceTree = "<group>"; };
+		2BD422B416B5512900FDC029 /* GRMustacheTemplateRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustacheTemplateRepository.h; sourceTree = "<group>"; };
+		2BD422B516B5512900FDC029 /* GRMustacheVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustacheVersion.h; sourceTree = "<group>"; };
+		2BD422B616B5512900FDC029 /* libGRMustache6-MacOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libGRMustache6-MacOS.a"; path = "Mustache/libGRMustache6-MacOS.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +62,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BCE89C415E5FDF6007DF5E7 /* Foundation.framework in Frameworks */,
+				2BD422B716B5512900FDC029 /* libGRMustache6-MacOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				2BCE89C515E5FDF6007DF5E7 /* Rfile */,
-				2BCE89DA15E60106007DF5E7 /* Supporting Files */,
+				2BD422AA16B5511B00FDC029 /* Mustache */,
 				2BCE89C215E5FDF6007DF5E7 /* Frameworks */,
 				2BCE89C015E5FDF6007DF5E7 /* Products */,
 			);
@@ -79,11 +91,30 @@
 			isa = PBXGroup;
 			children = (
 				2BCE89C315E5FDF6007DF5E7 /* Foundation.framework */,
+				2BD422B616B5512900FDC029 /* libGRMustache6-MacOS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		2BCE89C515E5FDF6007DF5E7 /* Rfile */ = {
+			isa = PBXGroup;
+			children = (
+				2BD422A316B3C96800FDC029 /* Main */,
+				2BD422A116B3C94C00FDC029 /* Template */,
+			);
+			path = Rfile;
+			sourceTree = "<group>";
+		};
+		2BD422A116B3C94C00FDC029 /* Template */ = {
+			isa = PBXGroup;
+			children = (
+				2BD4229E16B3C2A200FDC029 /* GSRfileTemplate.h */,
+				2BD422A016B3C40900FDC029 /* Rfile.template */,
+			);
+			name = Template;
+			sourceTree = "<group>";
+		};
+		2BD422A316B3C96800FDC029 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				2BCE89C615E5FDF6007DF5E7 /* main.m */,
@@ -96,17 +127,25 @@
 				2BC9621915E79689001D0771 /* NSString+Rfile.h */,
 				2BC9621D15E7C627001D0771 /* NSString+Rfile.m */,
 			);
-			path = Rfile;
+			name = Main;
 			sourceTree = "<group>";
 		};
-		2BCE89DA15E60106007DF5E7 /* Supporting Files */ = {
+		2BD422AA16B5511B00FDC029 /* Mustache */ = {
 			isa = PBXGroup;
 			children = (
-				2BCE89CA15E5FDF6007DF5E7 /* Rfile.1 */,
-				2BCE89C915E5FDF6007DF5E7 /* Rfile-Prefix.pch */,
+				2BD422AB16B5512900FDC029 /* GRMustache.h */,
+				2BD422AC16B5512900FDC029 /* GRMustacheAvailabilityMacros.h */,
+				2BD422AD16B5512900FDC029 /* GRMustacheContext.h */,
+				2BD422AE16B5512900FDC029 /* GRMustacheError.h */,
+				2BD422AF16B5512900FDC029 /* GRMustacheFilter.h */,
+				2BD422B016B5512900FDC029 /* GRMustacheRendering.h */,
+				2BD422B116B5512900FDC029 /* GRMustacheTag.h */,
+				2BD422B216B5512900FDC029 /* GRMustacheTagDelegate.h */,
+				2BD422B316B5512900FDC029 /* GRMustacheTemplate.h */,
+				2BD422B416B5512900FDC029 /* GRMustacheTemplateRepository.h */,
+				2BD422B516B5512900FDC029 /* GRMustacheVersion.h */,
 			);
-			name = "Supporting Files";
-			path = Rfile;
+			path = Mustache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,8 +262,10 @@
 		2BCE89CF15E5FDF6007DF5E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Rfile/Rfile-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Mustache\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -232,8 +273,10 @@
 		2BCE89D015E5FDF6007DF5E7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Rfile/Rfile-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Mustache\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

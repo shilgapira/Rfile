@@ -87,13 +87,13 @@
 }
 
 - (void)build {
-    printf("Scanning for resources in: %s\n", [self.path UTF8String]);
     [self scanResources];
     self.writer.cmdLine = [self cmdLine];
     [self.writer writeToTarget:self.target];
 }
 
 - (void)scanResources {
+    printf("Scanning for resources in: %s\n", [self.path UTF8String]);
     NSFileManager *fileManager = NSFileManager.defaultManager;
     NSDirectoryEnumerator *dirEnumerator = [fileManager enumeratorAtPath:self.path];
     for (NSString *subpath in dirEnumerator) {
