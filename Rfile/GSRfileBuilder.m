@@ -93,7 +93,8 @@
 }
 
 - (void)scanResources {
-    printf("Scanning for resources in: %s\n", [self.path UTF8String]);
+    [self addCommonResources];
+
     NSFileManager *fileManager = NSFileManager.defaultManager;
     NSDirectoryEnumerator *dirEnumerator = [fileManager enumeratorAtPath:self.path];
     for (NSString *subpath in dirEnumerator) {
@@ -102,6 +103,15 @@
         if ([fileManager fileExistsAtPath:fullpath isDirectory:&directory] && !directory) {
             [self addResourcesFromFile:fullpath];
         }
+    }
+}
+
+- (void)addCommonResources {
+    for (id<GSResourceHandler> handler in self.handlers) {
+        NSDictionary *entries = [handler commonEntries];
+        [entries enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
+            [self.writer addResource:value key:key type:handler.type];
+        }];
     }
 }
 

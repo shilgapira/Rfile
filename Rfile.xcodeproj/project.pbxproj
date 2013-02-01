@@ -12,8 +12,10 @@
 		2BC9621E15E7C627001D0771 /* NSString+Rfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC9621D15E7C627001D0771 /* NSString+Rfile.m */; };
 		2BCE89C415E5FDF6007DF5E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BCE89C315E5FDF6007DF5E7 /* Foundation.framework */; };
 		2BCE89C715E5FDF6007DF5E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCE89C615E5FDF6007DF5E7 /* main.m */; };
-		2BCE89D915E600EF007DF5E7 /* GSResourceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCE89D815E600EF007DF5E7 /* GSResourceHandler.m */; };
 		2BD422B716B5512900FDC029 /* libGRMustache6-MacOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD422B616B5512900FDC029 /* libGRMustache6-MacOS.a */; };
+		2BF7ADE316BAC12600525014 /* GSImageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF7ADE016BAC12600525014 /* GSImageHandler.m */; };
+		2BF7ADE416BAC12600525014 /* GSStringsHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF7ADE216BAC12600525014 /* GSStringsHandler.m */; };
+		2BF7ADE716BAC44800525014 /* GSFontHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF7ADE616BAC44800525014 /* GSFontHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,7 +41,6 @@
 		2BCE89C315E5FDF6007DF5E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2BCE89C615E5FDF6007DF5E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2BCE89D715E600EF007DF5E7 /* GSResourceHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSResourceHandler.h; sourceTree = "<group>"; };
-		2BCE89D815E600EF007DF5E7 /* GSResourceHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSResourceHandler.m; sourceTree = "<group>"; };
 		2BD4229E16B3C2A200FDC029 /* GSRfileTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSRfileTemplate.h; sourceTree = "<group>"; };
 		2BD422A016B3C40900FDC029 /* Rfile.template */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; path = Rfile.template; sourceTree = "<group>"; };
 		2BD422AB16B5512900FDC029 /* GRMustache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustache.h; sourceTree = "<group>"; };
@@ -54,6 +55,13 @@
 		2BD422B416B5512900FDC029 /* GRMustacheTemplateRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustacheTemplateRepository.h; sourceTree = "<group>"; };
 		2BD422B516B5512900FDC029 /* GRMustacheVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustacheVersion.h; sourceTree = "<group>"; };
 		2BD422B616B5512900FDC029 /* libGRMustache6-MacOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libGRMustache6-MacOS.a"; path = "Mustache/libGRMustache6-MacOS.a"; sourceTree = "<group>"; };
+		2BF7ADDF16BAC12600525014 /* GSImageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSImageHandler.h; sourceTree = "<group>"; };
+		2BF7ADE016BAC12600525014 /* GSImageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSImageHandler.m; sourceTree = "<group>"; };
+		2BF7ADE116BAC12600525014 /* GSStringsHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSStringsHandler.h; sourceTree = "<group>"; };
+		2BF7ADE216BAC12600525014 /* GSStringsHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSStringsHandler.m; sourceTree = "<group>"; };
+		2BF7ADE516BAC44800525014 /* GSFontHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSFontHandler.h; sourceTree = "<group>"; };
+		2BF7ADE616BAC44800525014 /* GSFontHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSFontHandler.m; sourceTree = "<group>"; };
+		2BF7ADE816BAC5BB00525014 /* GSFontLists.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSFontLists.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				2BD422A316B3C96800FDC029 /* Main */,
+				2BF7ADDE16BAC0CF00525014 /* Resources */,
 				2BD422A116B3C94C00FDC029 /* Template */,
 			);
 			path = Rfile;
@@ -122,8 +131,6 @@
 				2B6D0DAC1680EDF80091F3D7 /* GSRfileBuilder.m */,
 				2B6D0DAF1680EDF80091F3D7 /* GSRfileWriter.h */,
 				2B6D0DB21680EE920091F3D7 /* GSRfileWriter.m */,
-				2BCE89D715E600EF007DF5E7 /* GSResourceHandler.h */,
-				2BCE89D815E600EF007DF5E7 /* GSResourceHandler.m */,
 				2BC9621915E79689001D0771 /* NSString+Rfile.h */,
 				2BC9621D15E7C627001D0771 /* NSString+Rfile.m */,
 			);
@@ -146,6 +153,21 @@
 				2BD422B516B5512900FDC029 /* GRMustacheVersion.h */,
 			);
 			path = Mustache;
+			sourceTree = "<group>";
+		};
+		2BF7ADDE16BAC0CF00525014 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2BCE89D715E600EF007DF5E7 /* GSResourceHandler.h */,
+				2BF7ADDF16BAC12600525014 /* GSImageHandler.h */,
+				2BF7ADE016BAC12600525014 /* GSImageHandler.m */,
+				2BF7ADE116BAC12600525014 /* GSStringsHandler.h */,
+				2BF7ADE216BAC12600525014 /* GSStringsHandler.m */,
+				2BF7ADE516BAC44800525014 /* GSFontHandler.h */,
+				2BF7ADE616BAC44800525014 /* GSFontHandler.m */,
+				2BF7ADE816BAC5BB00525014 /* GSFontLists.h */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,10 +222,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BCE89C715E5FDF6007DF5E7 /* main.m in Sources */,
-				2BCE89D915E600EF007DF5E7 /* GSResourceHandler.m in Sources */,
 				2BC9621E15E7C627001D0771 /* NSString+Rfile.m in Sources */,
 				2B6D0DB01680EDF80091F3D7 /* GSRfileBuilder.m in Sources */,
 				2B6D0DB31680EE920091F3D7 /* GSRfileWriter.m in Sources */,
+				2BF7ADE316BAC12600525014 /* GSImageHandler.m in Sources */,
+				2BF7ADE416BAC12600525014 /* GSStringsHandler.m in Sources */,
+				2BF7ADE716BAC44800525014 /* GSFontHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

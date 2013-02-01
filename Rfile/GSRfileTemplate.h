@@ -41,15 +41,16 @@ static NSString *GSRfileTemplate =
 // These macros return the requested resource directly.\n\
 //\n\
 // For example, say we have a UITableView showing a list of countries. We've got\n\
-// retina and non-retina images for each country's flag (\"FlagSweden.png\" and\n\
-// \"FlagSweden@2x.png\") and we've got localized names for each country as\n\
-// entries (\"country_name_sweden\") in the Localizable.strings files.\n\
+// retina and non-retina images for each country's flag (e.g., \"FlagSweden.png\"\n\
+// and \"FlagSweden@2x.png\") and we've got localized names for each country as\n\
+// entries (e.g., \"country_name_sweden\") in the Localizable.strings files.\n\
 //\n\
 // In this case, to set a country's name and flag image in a UITableViewCell we\n\
 // might do something like this:\n\
 //\n\
 //     cell.textLabel.text = {{p}}String(CountryNameSweden);\n\
-//     cell.imageView.image = {{p}}Image(FlagSweden};\n\
+{{#fonts}}//     cell.textLabel.font = {{p}}Font(BaskervilleBold, 20.0f);\n\
+{{/fonts}}//     cell.imageView.image = {{p}}Image(FlagSweden};\n\
 //\n\
 \n\
 #define {{p}}String(NAME)                 NSLocalizedString({{p}}StringKey(NAME), nil)\n\
@@ -57,7 +58,9 @@ static NSString *GSRfileTemplate =
 #define {{p}}FormatString(NAME, ...)      [NSString stringWithFormat:{{p}}String(NAME),##__VA_ARGS__]\n\
 \n\
 #define {{p}}Image(NAME)                  [UIImage imageNamed:{{p}}ImageFile(NAME)]\n\
-\n\
+{{#fonts}}\n\
+#define {{p}}Font(NAME, SIZE)             [UIFont fontWithName:{{p}}FontName(NAME) size:(SIZE)]\n\
+{{/fonts}}\n\
 \n\
 \n\
 ////////////////////////////////////////////////////////////////////////////////\n\
@@ -84,7 +87,12 @@ static NSString *GSRfileTemplate =
 //     image = [UIImage imageWithContentsOfFile:{{p}}ImageFile(FlagSweden)];\n\
 //\n\
 #define {{p}}ImageFile(NAME)              _{{p}}ResourceKey(Image, NAME)\n\
-\n\
+{{#fonts}}\n\
+//\n\
+// Returns the name of a resource or platform font.\n\
+//\n\
+#define {{p}}FontName(NAME)               _{{p}}ResourceKey(Font, NAME)\n\
+{{/fonts}}\n\
 \n\
 \n\
 ////////////////////////////////////////////////////////////////////////////////\n\
@@ -94,6 +102,7 @@ static NSString *GSRfileTemplate =
 // Internal defines and helpers used by the above macros. These should be\n\
 // considered implementation details and aren't meant to be used directly.\n\
 //\n\
+\n\
 \n\
 //\n\
 // Low level macro that translates resource types and names into one of the\n\

@@ -24,6 +24,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface NSString (Rfile)
 
 - (NSString *)stringByConvertingToAscii;

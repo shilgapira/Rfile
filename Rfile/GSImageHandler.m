@@ -1,5 +1,5 @@
 //
-// GSResourceHandler.h
+// GSImageHandler.m
 //
 // Copyright (c) 2012 Gil Shapira
 //
@@ -22,15 +22,30 @@
 // THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import "GSImageHandler.h"
 
 
-@protocol GSResourceHandler
+@implementation GSImageHandler
 
-- (NSString *)type;
+- (NSString *)type {
+    return @"image";
+}
 
-- (NSDictionary *)commonEntries;
+- (NSDictionary *)commonEntries {
+    return nil;
+}
 
-- (NSDictionary *)entriesForResourceAtPath:(NSString *)path;
+- (NSDictionary *)entriesForResourceAtPath:(NSString *)path {
+    NSString *ext = [[path pathExtension] lowercaseString];
+    if ([ext isEqualToString:@"png"] || [ext isEqualToString:@"jpg"]) {
+        NSString *filename = [path lastPathComponent];
+        NSString *key = [filename stringByDeletingPathExtension];
+        if (key.length && filename.length) {
+            return @{key : filename};
+        }
+    }
+    
+    return nil;
+}
 
 @end

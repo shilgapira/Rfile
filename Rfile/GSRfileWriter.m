@@ -80,7 +80,9 @@
         return [t1[@"type"] compare:t2[@"type"]];
     }];
 
-    NSDictionary *data = @{ @"cmdline" : self.cmdLine, @"p" : self.prefix, @"types" : sortedTypes };
+    NSUInteger fonts = [self.types[@"font"] count];
+
+    NSDictionary *data = @{ @"cmdline" : self.cmdLine, @"p" : self.prefix, @"fonts" : @(fonts), @"types" : sortedTypes };
 
     return data;
 }

@@ -1,5 +1,5 @@
 //
-// GSResourceHandler.h
+// GSStringsHandler.h
 //
 // Copyright (c) 2012 Gil Shapira
 //
@@ -22,15 +22,9 @@
 // THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import "GSResourceHandler.h"
 
 
-@protocol GSResourceHandler
-
-- (NSString *)type;
-
-- (NSDictionary *)commonEntries;
-
-- (NSDictionary *)entriesForResourceAtPath:(NSString *)path;
+@interface GSStringsHandler : NSObject <GSResourceHandler>
 
 @end

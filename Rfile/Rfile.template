@@ -12,15 +12,15 @@
 // These macros return the requested resource directly.
 //
 // For example, say we have a UITableView showing a list of countries. We've got
-// retina and non-retina images for each country's flag ("FlagSweden.png" and
-// "FlagSweden@2x.png") and we've got localized names for each country as
-// entries ("country_name_sweden") in the Localizable.strings files.
+// retina and non-retina images for each country's flag (e.g., "FlagSweden.png"
+// and "FlagSweden@2x.png") and we've got localized names for each country as
+// entries (e.g., "country_name_sweden") in the Localizable.strings files.
 //
-// In this case, to set a country's name and flag image in a UITableViewCell we
-// might do something like this:
+// In this case, to set a country table cell we might do something like this:
 //
 //     cell.textLabel.text = {{p}}String(CountryNameSweden);
-//     cell.imageView.image = {{p}}Image(FlagSweden};
+{{#fonts}}//     cell.textLabel.font = {{p}}Font(BaskervilleBold, 20.0f);
+{{/fonts}}//     cell.imageView.image = {{p}}Image(FlagSweden};
 //
 
 #define {{p}}String(NAME)                 NSLocalizedString({{p}}StringKey(NAME), nil)
@@ -28,7 +28,9 @@
 #define {{p}}FormatString(NAME, ...)      [NSString stringWithFormat:{{p}}String(NAME),##__VA_ARGS__]
 
 #define {{p}}Image(NAME)                  [UIImage imageNamed:{{p}}ImageFile(NAME)]
-
+{{#fonts}}
+#define {{p}}Font(NAME, SIZE)             [UIFont fontWithName:{{p}}FontName(NAME) size:(SIZE)]
+{{/fonts}}
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -55,7 +57,12 @@
 //     image = [UIImage imageWithContentsOfFile:{{p}}ImageFile(FlagSweden)];
 //
 #define {{p}}ImageFile(NAME)              _{{p}}ResourceKey(Image, NAME)
-
+{{#fonts}}
+//
+// Returns the name of a resource or platform font.
+//
+#define {{p}}FontName(NAME)               _{{p}}ResourceKey(Font, NAME)
+{{/fonts}}
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -65,6 +72,7 @@
 // Internal defines and helpers used by the above macros. These should be
 // considered implementation details and aren't meant to be used directly.
 //
+
 
 //
 // Low level macro that translates resource types and names into one of the

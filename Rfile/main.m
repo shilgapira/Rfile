@@ -23,30 +23,37 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GSResourceHandler.h"
+#import "GSImageHandler.h"
+#import "GSStringsHandler.h"
+#import "GSFontHandler.h"
 #import "GSRfileBuilder.h"
 
 
-int main(int argc, const char * argv[])
-{
+int main(int argc, const char *argv[]) {
     @autoreleasepool {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         if (![defaults objectForKey:@"dir"] || ![defaults objectForKey:@"target"]) {
-            printf("Usage: Rfile -dir path -target file [-prefix <prefix>]\n");
+            printf("Usage: Rfile -dir path -target file [-prefix <prefix>] [-fonts <os version>]\n");
             return 0;
         }
         
         GSRfileBuilder *builder = [GSRfileBuilder new];
-        [builder addHandler:[GSStringsResourceHandler new]];
-        [builder addHandler:[GSImageResourceHandler new]];
-        [builder addHandler:[GSSoundResourceHandler new]];
-        
+        [builder addHandler:[GSStringsHandler new]];
+        [builder addHandler:[GSImageHandler new]];
+
         builder.path = [defaults objectForKey:@"dir"];
         builder.target = [defaults objectForKey:@"target"];
-        if ([defaults objectForKey:@"prefix"]) {
-            builder.prefix = [defaults objectForKey:@"prefix"];
+        
+        if ([defaults stringForKey:@"prefix"]) {
+            builder.prefix = [defaults stringForKey:@"prefix"];
         }
         
+        if ([defaults floatForKey:@"fonts"] > 0.0f) {
+            GSFontHandler *fontHandler = [GSFontHandler new];
+            fontHandler.osVersion = [defaults floatForKey:@"fonts"];
+            [builder addHandler:fontHandler];
+        }
+
         [builder build];
     }
     return 0;

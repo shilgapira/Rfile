@@ -1,7 +1,7 @@
 //
-// GSResourceHandler.h
+// GSFontHandler.h
 //
-// Copyright (c) 2012 Gil Shapira
+// Copyright (c) 2013 Gil Shapira
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -22,15 +22,11 @@
 // THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import "GSResourceHandler.h"
 
 
-@protocol GSResourceHandler
+@interface GSFontHandler : NSObject <GSResourceHandler>
 
-- (NSString *)type;
-
-- (NSDictionary *)commonEntries;
-
-- (NSDictionary *)entriesForResourceAtPath:(NSString *)path;
+@property (nonatomic, assign) float osVersion;
 
 @end

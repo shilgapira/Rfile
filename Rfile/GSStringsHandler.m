@@ -1,5 +1,5 @@
 //
-// GSResourceHandler.m
+// GSStringsHandler.m
 //
 // Copyright (c) 2012 Gil Shapira
 //
@@ -22,14 +22,18 @@
 // THE SOFTWARE.
 //
 
-#import "GSResourceHandler.h"
+#import "GSStringsHandler.h"
 #import "NSString+Rfile.h"
 
 
-@implementation GSStringsResourceHandler
+@implementation GSStringsHandler
 
 - (NSString *)type {
     return @"string";
+}
+
+- (NSDictionary *)commonEntries {
+    return nil;
 }
 
 - (NSDictionary *)entriesForResourceAtPath:(NSString *)path {
@@ -55,50 +59,6 @@
     }
     
     return entries;
-}
-
-@end
-
-
-@implementation GSImageResourceHandler
-
-- (NSString *)type {
-    return @"image";
-}
-
-- (NSDictionary *)entriesForResourceAtPath:(NSString *)path {
-    NSString *ext = [[path pathExtension] lowercaseString];
-    if ([ext isEqualToString:@"png"] || [ext isEqualToString:@"jpg"]) {
-        NSString *filename = [path lastPathComponent];
-        NSString *key = [filename stringByDeletingPathExtension];
-        if (key.length && filename.length) {
-            return @{key : filename};
-        }
-    }
-    
-    return nil;
-}
-
-@end
-
-
-@implementation GSSoundResourceHandler
-
-- (NSString *)type {
-    return @"sound";
-}
-
-- (NSDictionary *)entriesForResourceAtPath:(NSString *)path {
-    NSString *ext = [[path pathExtension] lowercaseString];
-    if ([ext isEqualToString:@"ogg"] || [ext isEqualToString:@"mp3"] || [ext isEqualToString:@"wav"]) {
-        NSString *filename = [path lastPathComponent];
-        NSString *key = [filename stringByDeletingPathExtension];
-        if (key.length && filename.length) {
-            return @{key : filename};
-        }
-    }
-    
-    return nil;
 }
 
 @end
