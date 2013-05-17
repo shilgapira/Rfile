@@ -59,11 +59,12 @@
         NSMutableArray *resources = [NSMutableArray array];
 
         [self.types[type] enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *resource, BOOL *stop) {
-            NSString *identifier = [[NSString stringWithFormat:@"%@ %@",type,key] stringByConvertingToCIdentifier];
+            NSString *helper = [key stringByConvertingToCIdentifier];
+            
+            NSString *identifier = [[NSString stringWithFormat:@"%@ %@",type,helper] stringByConvertingToCIdentifier];
             printf("    [%s]  =>  %s\n", [identifier UTF8String], [resource UTF8String]);
             
             NSString *define = [identifier stringByPaddingToMinimumLength:50];
-            NSString *helper = [key stringByConvertingToCIdentifier];
             [resources addObject:@{ @"define" : define, @"helper" : helper, @"resource" : resource }];
         }];
 

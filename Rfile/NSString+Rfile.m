@@ -25,6 +25,9 @@
 #import "NSString+Rfile.h"
 
 
+static NSString *kDigitNames[10] = { @"Zero", @"One", @"Two", @"Three", @"Four", @"Five", @"Six", @"Seven", @"Eight", @"Nine" };
+
+
 static void replaceCharacters(NSMutableString *string, NSCharacterSet *set, NSString *replacement) {
     NSRange range = [string rangeOfCharacterFromSet:set];
     while (range.location != NSNotFound) {
@@ -39,6 +42,21 @@ static void insertBeforeCharacters(NSMutableString *string, NSCharacterSet *set,
         [string insertString:insert atIndex:range.location];
         NSUInteger index = range.location + 2;
         range = [string rangeOfCharacterFromSet:set options:0 range:NSMakeRange(index, [string length]-index)];
+    }
+}
+
+static void ensureFirstCharacter(NSMutableString *string) {
+    if (string.length) {
+        unichar ch = [string characterAtIndex:0];
+        if (ch >= '0' && ch <= '9') {
+            // first char is a digit, e.g., "3DButtonTitle" => "ThreeDButtonTitle"
+            NSUInteger digit = ch - '0';
+            NSString *name = kDigitNames[digit];
+            [string replaceCharactersInRange:NSMakeRange(0, 1) withString:name];
+        } else if ((ch != '_') && (ch < 'a' || ch > 'z') && (ch < 'A' || ch > 'Z')) {
+            // any other non-valid character
+            [string insertString:@"A" atIndex:0];
+        }
     }
 }
 
@@ -75,6 +93,9 @@ static void insertBeforeCharacters(NSMutableString *string, NSCharacterSet *set,
 
     // leaves us with only valid identifier characters
     replaceCharacters(mutable, [[NSCharacterSet alphanumericCharacterSet] invertedSet], @"");
+    
+    // make sure first character is _ or a letter
+    ensureFirstCharacter(mutable);
     
     return mutable;
 }
