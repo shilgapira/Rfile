@@ -53,13 +53,13 @@ static NSString *GSRfileTemplate =
 {{/fonts}}//     cell.imageView.image = {{p}}Image(FlagSweden};\n\
 //\n\
 \n\
-#define {{p}}String(NAME)                 NSLocalizedString({{p}}StringKey(NAME), nil)\n\
+#define {{p}}String(NAME)                 _{{p}}String({{p}}StringKey(NAME))\n\
 \n\
 #define {{p}}FormatString(NAME, ...)      [NSString stringWithFormat:{{p}}String(NAME),##__VA_ARGS__]\n\
 \n\
-#define {{p}}Image(NAME)                  [UIImage imageNamed:{{p}}ImageFile(NAME)]\n\
+#define {{p}}Image(NAME)                  _{{p}}Image({{p}}ImageFile(NAME))\n\
 {{#fonts}}\n\
-#define {{p}}Font(NAME, SIZE)             [UIFont fontWithName:{{p}}FontName(NAME) size:(SIZE)]\n\
+#define {{p}}Font(NAME, SIZE)             _{{p}}Font({{p}}FontName(NAME), SIZE)\n\
 {{/fonts}}\n\
 \n\
 \n\
@@ -113,9 +113,23 @@ static NSString *GSRfileTemplate =
 // code is stripped out by compiler optimizations, so in practice using this\n\
 // macro results in the same disassembly as using the string literals directly.\n\
 //\n\
-#define _{{p}}ResourceKey(TYPE, NAME)    \\\n\
+#define _{{p}}ResourceKey(TYPE, NAME)     \\\n\
     ((void)(NO && ((void)((_{{p}}Resources *) NULL)->TYPE.NAME, NO)), \\\n\
     _{{p}}##TYPE##NAME)\n\
+\n\
+\n\
+//\n\
+// The convenience macros above resolve the resource key and call these macros\n\
+// to return the relevant object. This indirection is redundant but it helps\n\
+// Xcode to not get confused with syntax coloring of the resource names.\n\
+//\n\
+#define _{{p}}String(KEY)                 NSLocalizedString(KEY, nil)\n\
+\n\
+#define _{{p}}Image(KEY)                  [UIImage imageNamed:(KEY)]\n\
+{{#fonts}}\n\
+#define _{{p}}Font(KEY, SIZE)             [UIFont fontWithName:(KEY) size:(SIZE)]\n\
+{{/fonts}}\n\
+\n\
 \n\
 \n\
 //\n\

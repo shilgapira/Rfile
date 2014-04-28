@@ -23,13 +23,13 @@
 {{/fonts}}//     cell.imageView.image = {{p}}Image(FlagSweden};
 //
 
-#define {{p}}String(NAME)                 NSLocalizedString({{p}}StringKey(NAME), nil)
+#define {{p}}String(NAME)                 _{{p}}String({{p}}StringKey(NAME))
 
 #define {{p}}FormatString(NAME, ...)      [NSString stringWithFormat:{{p}}String(NAME),##__VA_ARGS__]
 
-#define {{p}}Image(NAME)                  [UIImage imageNamed:{{p}}ImageFile(NAME)]
+#define {{p}}Image(NAME)                  _{{p}}Image({{p}}ImageFile(NAME))
 {{#fonts}}
-#define {{p}}Font(NAME, SIZE)             [UIFont fontWithName:{{p}}FontName(NAME) size:(SIZE)]
+#define {{p}}Font(NAME, SIZE)             _{{p}}Font({{p}}FontName(NAME), SIZE)
 {{/fonts}}
 
 
@@ -86,6 +86,20 @@
 #define _{{p}}ResourceKey(TYPE, NAME)     \
     ((void)(NO && ((void)((_{{p}}Resources *) NULL)->TYPE.NAME, NO)), \
     _{{p}}##TYPE##NAME)
+
+
+//
+// The convenience macros above resolve the resource key and call these macros
+// to return the relevant object. This indirection is redundant but it helps
+// Xcode to not get confused with syntax coloring of the resource names.
+//
+#define _{{p}}String(KEY)                 NSLocalizedString(KEY, nil)
+
+#define _{{p}}Image(KEY)                  [UIImage imageNamed:(KEY)]
+{{#fonts}}
+#define _{{p}}Font(KEY, SIZE)             [UIFont fontWithName:(KEY) size:(SIZE)]
+{{/fonts}}
+
 
 
 //
