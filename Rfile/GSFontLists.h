@@ -271,6 +271,14 @@ static NSDictionary *GSFontLists(void) {
             @"Superclarendon-LightItalic",
             @"Superclarendon-Regular",
             @"Thonburi-Light",
+        ],
+
+        @8.0f : @[
+            @"KhmerSangamMN",
+            @"KohinoorDevanagari-Book",
+            @"KohinoorDevanagari-Light",
+            @"KohinoorDevanagari-Medium",
+            @"LaoSangamMN",
         ]
 
     };
